@@ -33,6 +33,7 @@ pub fn init() -> Result<(), JsValue> {
 #[wasm_bindgen]
 pub struct GeneratedAddress {
     private_key: String,
+    public_key: String,
     address: String,
 }
 
@@ -44,12 +45,17 @@ impl GeneratedAddress {
         let address = Address::from(&public_key);
         GeneratedAddress {
             private_key: private_key.to_hex(),
+            public_key: public_key.to_hex(),
             address: address.to_user_friendly_address()
         }
     }
 
     pub fn private_key(&self) -> String {
         self.private_key.clone()
+    }
+
+    pub fn public_key(&self) -> String {
+        self.public_key.clone()
     }
 
     pub fn address(&self) -> String {

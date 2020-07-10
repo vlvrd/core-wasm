@@ -3,8 +3,9 @@ import $ from "jquery";
 import * as wasm from "core-wasm";
 wasm.init();
 
-$("#btn").click(function(event) {
-    var res = wasm.GeneratedAddress.generate();
-    $("#private_key").val(res.private_key());
-    $("#address").val(res.address());
+$("#generate-address").click(() => {
+    var gen = wasm.GeneratedAddress.generate();
+    $("#private_key").val(gen.private_key());
+    $("#public_key").val(gen.public_key());
+    $("#address").val(gen.address());
 });
