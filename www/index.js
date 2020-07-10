@@ -1,8 +1,6 @@
 import $ from "jquery";
 
-import * as wasm from "wasm-playground";
-
-
+import * as wasm from "core-wasm";
 wasm.init();
 
 $("#btn").click(function(event) {
