@@ -2,7 +2,7 @@
 
 You'll need to install [wasm-pack](https://rustwasm.github.io/wasm-pack/installer/) and [npm](https://www.npmjs.com/).
 
-Then cd into the repository and run
+Then cd into the example folder and run
 
 ```bash
 wasm-pack build
@@ -15,4 +15,3 @@ cd www
 npm install
 npm run start
 ```
-
