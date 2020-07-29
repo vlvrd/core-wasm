@@ -7,16 +7,17 @@ use wasm_bindgen::prelude::*;
 use cfg_if::cfg_if;
 use hex;
 
+use beserial::{Serialize};
 use nimiq_keys::{Address, PrivateKey, PublicKey, KeyPair};
 use nimiq_utils::key_rng::SecureGenerate;
 use nimiq_hash::{Blake2bHash, Hash};
 use nimiq_primitives::coin::Coin;
 use nimiq_primitives::networks::NetworkId;
-use nimiq_transaction::{TransactionFormat, TransactionFlags};
+use nimiq_transaction::{TransactionFormat};
 use nimiq_transaction_builder::{Recipient, TransactionBuilder};
 
-// pub mod plain_transaction;
-// use plain_transaction::{PlainTransaction, PlainData};
+// mod plain_transaction;
+// use plain_transaction::{PlainData, PlainTransaction};
 
 cfg_if! {
     // When the `wee_alloc` feature is enabled, use `wee_alloc` as the global
@@ -99,10 +100,10 @@ pub struct PlainTransaction {
     pub feePerByte: f64,
     pub validityStartHeight: u32,
     network: String,
-    // pub flags: u8,
+    pub flags: u8,
     data: PlainData,
     proof: PlainData,
-    // pub size: u32,
+    pub size: u32,
     pub valid: bool,
 }
 
@@ -197,14 +198,14 @@ pub fn create_transaction(
         feePerByte: tx.fee_per_byte(),
         validityStartHeight: tx.validity_start_height,
         network: tx.network_id.to_string(),
-        // flags: tx.flags,
+        flags: tx.flags.bits(),
         data: PlainData {
             raw: hex::encode(&tx.data),
         },
         proof: PlainData {
             raw: hex::encode(&tx.proof),
         },
-        // size: tx.serialized_size(),
+        size: tx.serialized_size() as u32,
         valid: tx.verify(tx.network_id).is_ok(),
     }
 }

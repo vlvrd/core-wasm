@@ -26,6 +26,7 @@ console_error_panic_hook = "0.1"
 # Unfortunately, `wee_alloc` requires nightly Rust when targeting wasm for now.
 wee_alloc = { version = "0.4", optional = true }
 
+beserial = { git = "https://github.com/nimiq/core-rs-albatross.git", branch = "albatross" }
 nimiq-primitives = { git = "https://github.com/nimiq/core-rs-albatross.git", branch = "albatross" }
 nimiq-keys = { git = "https://github.com/nimiq/core-rs-albatross.git", branch = "albatross" }
 nimiq-utils = { git = "https://github.com/nimiq/core-rs-albatross.git", branch = "albatross" }
@@ -43,11 +44,6 @@ hex = "0.4"
 version = "0.3.4"
 features = [
     'console',
-    # 'Document',
-    # 'Element',
-    # 'HtmlElement',
-    # 'Node',
-    # 'Window',
 ]
 
 [dev-dependencies]

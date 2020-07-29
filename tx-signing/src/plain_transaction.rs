@@ -26,10 +26,10 @@ pub struct PlainTransaction {
     pub feePerByte: f64,
     pub validityStartHeight: u32,
     network: String,
-    // pub flags: u8,
+    pub flags: u8,
     data: PlainData,
     proof: PlainData,
-    // pub size: u32,
+    pub size: u32,
     pub valid: bool,
 }
 
